@@ -1,0 +1,43 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "pact-example"
+host: "jsonplaceholder.typicode.com"
+schemes:
+  - "https"
+paths:
+  /todos/{todoId}:
+    get:
+      tags:
+        - "todos"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "todoId"
+          in: "path"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Todos"
+definitions:
+  Todos:
+    type: "object"
+    properties:
+      userId:
+        type: "integer"
+        format: "int64"
+        example: 1
+      id:
+        type: "integer"
+        format: "int64"
+        example: 1
+      title:
+        type: "string"
+        example: "delectus aut autem"
+      completed:
+        type: "boolean"
+        example: false
